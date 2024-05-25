@@ -1,7 +1,5 @@
 import 'package:flutter_school/featuers/Home/view/home.dart';
-import 'package:flutter_school/featuers/auth/view/signup_page.dart';
 import 'package:flutter_school/featuers/auth/view/widget/auth/custombuttonauth.dart';
-import 'package:flutter_school/featuers/auth/view/widget/auth/customtextbodyauth.dart';
 import 'package:flutter_school/featuers/auth/view/widget/auth/customtextformauth.dart';
 import 'package:flutter_school/featuers/auth/view/widget/auth/customtexttitleauth.dart';
 import 'package:flutter_school/featuers/auth/view/widget/auth/textsignup.dart';
