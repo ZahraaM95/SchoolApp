@@ -1,17 +1,25 @@
+// ignore_for_file: deprecated_member_use, must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:flutter_school/core/constant/color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustonTextFormAuth extends StatelessWidget {
   final String hinttext;
- 
-  final IconData iconData;
- // final TextEditingController? mycontroller;
+  late bool? keyboardType;
+  final String svg;
+ final TextEditingController? mycontroller;
+  final String? Function(String?) valid;
 
-  const CustonTextFormAuth(
+   CustonTextFormAuth(
       {Key? key,
       required this.hinttext,
-      
-      required this.iconData,
-     // required this.mycontroller
+       this.keyboardType,
+      required this.svg,
+        required this.valid,
+     required this.mycontroller,
+      // required Null Function(dynamic value) onChanged
      })
       : super(key: key);
 
@@ -20,21 +28,29 @@ class CustonTextFormAuth extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
-         textAlign: TextAlign.right,
-        // controller: mycontroller,
+        validator: valid,
+        keyboardType: keyboardType == true?TextInputType.phone:TextInputType.text,
+        textAlign: TextAlign.right,
+        controller: mycontroller,
         decoration: InputDecoration(
           
             hintText: hinttext,
             
-            hintStyle: const TextStyle(fontSize: 14,),
+            hintStyle:  TextStyle(fontSize: ScreenUtil().setSp(14),),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-           
-            suffixIcon: Icon(iconData),
+                 EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(5), horizontal: ScreenUtil().setWidth(10)),
+           prefixIcon: Padding(
+             padding: const EdgeInsets.all(10.0),
+             child: SvgPicture.asset(svg,
+              color: AppColor.grey,
+                
+              fit: BoxFit.contain,
+              ),
+           ),
             border:
                 OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10))),
+                  borderRadius: BorderRadius.circular(14.h))),
       ),
     );
   }

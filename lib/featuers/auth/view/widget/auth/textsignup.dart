@@ -1,5 +1,6 @@
 import 'package:flutter_school/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextSignUpOrSignIn extends StatelessWidget {
   
@@ -21,9 +22,11 @@ class CustomTextSignUpOrSignIn extends StatelessWidget {
         InkWell(
           onTap: onTap,
           child: Text(texttwo,
-              style: const TextStyle(
+              style:  TextStyle(
                   color: AppColor.primaryColor, 
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.h,
+                  decoration: TextDecoration.underline
                   )),
         )
       ],

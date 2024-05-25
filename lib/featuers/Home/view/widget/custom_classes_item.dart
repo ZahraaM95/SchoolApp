@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_school/core/constant/imgaeasset.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ListViewItem extends StatelessWidget {
@@ -13,15 +14,15 @@ final String image;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-     height: 200, 
-     width: 400,
+     height: ScreenUtil().setHeight(200), 
+     width: ScreenUtil().setWidth(400),
       child: ListView.builder(
          shrinkWrap: true,
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return  Padding(
-                    padding:const EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
                     child: ListView(
                       shrinkWrap: true,
                       children: [
@@ -41,11 +42,11 @@ final String image;
   CustomClassImage() {
    
     return Container(
-      width: 400,
-      height: 600,
+      width:  ScreenUtil().setWidth(400),
+      height: ScreenUtil().setHeight(600),
      
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.h),
         image:   DecorationImage(
           image: AssetImage(image)
           

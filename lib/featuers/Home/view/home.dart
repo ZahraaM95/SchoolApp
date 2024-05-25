@@ -1,138 +1,166 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_school/featuers/Home/view/widget/bottom_navigation_bar.dart';
-import 'package:flutter_school/featuers/Home/view/widget/classes_list_view.dart';
+import 'package:flutter_school/featuers/Home/tab.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_school/featuers/auth/view/widget/auth/custombuttonauth.dart';
+import 'package:flutter_school/featuers/Home/view/offers_screen.dart';
 
-class MyHomePage extends StatelessWidget {
+class BrowsePage extends StatelessWidget {
+  const BrowsePage({super.key});
 
-    const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-         appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text('Logo',
-        style: TextStyle(
-          color: Colors.black
-          
-        ),),
-       
-      ),
-      body: const SafeArea(
-        child:SingleChildScrollView(
-          child:Column(
-             children: [
-         MyTabPage(),
-        ClassesListView(),
-       SizedBox(
-        height: 170,
-       ),
-          MyBottomNavigationBar(),
-      
-       ]
-       ),
-            
-            
-        )
-      
-      )
-      
-    );
-  }
-}
-
-class MyTabPage extends StatelessWidget {
-   const MyTabPage({
-    Key? key,
-   
-  }) : super(key: key);
-  
-   
-  @override
-  Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.all(8.0),
-      child:  SizedBox(
-        height: 80,
-        width: double.infinity,
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: customTabBarItem(
-                onTap:(){},
-                text: 'الاعدادية',
-                chose: false
-                ,
-                         ),
-              ),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: customTabBarItem(
-                onTap:(){} ,
-                text: 'المتوسطة',
-                chose: true,
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: customTabBarItem(
-                onTap: (){} ,
-                text: 'الابتدائيه',
-                chose: false,
-                 
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: customTabBarItem(
-                onTap: (){} ,
-                text: 'المشترك بها ',
-                chose: false,
-                 
-               ),
-             ),
-            
-          ]
+        title: const Text(
+          'Logo',
+          style: TextStyle(color: Colors.black),
         ),
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+             SizedBox(
+
+              height: ScreenUtil().setHeight(500),
+              width: ScreenUtil().setWidth(600),
+              
+              child: const StudyStageScreen()),
+              // const SizedBox(height: 40),
+              CustomButtomAuth(
+                text: 'التسجيل',
+                onPressed: () {
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => const OffersScreen(),
+                  );
+                },
+              ),
+              // const SizedBox(height: 40),
+              // const SizedBox(height: 40),
+            ],
+          ),
+        ),
+      ),
+    
+     
     );
   }
 }
 
-// ignore: must_be_immutable
-class customTabBarItem extends StatelessWidget {
-   customTabBarItem({
-    super.key,
-     required this.text,
-    required this.chose,
-    required this.onTap,
-  });
 
-   final String text;
-   final bool chose;
-   Function() onTap;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-       padding:const EdgeInsets.all(15),
-           alignment: Alignment.center,
-           decoration: BoxDecoration(
-             border: Border.all(color: Colors.blue),
-             borderRadius: BorderRadius.circular(10)
+// class MyTabPage extends StatelessWidget {
+//   MyTabPage({
+//     Key? key,
+//     required this.name,
+//   }) : super(key: key);
+//  final String name;
+// //  final String backimage;
+//   @override
+//   Widget build(BuildContext context) {
+//     return  Padding(
+//       padding:  EdgeInsets.all(8.0.h),
+//       child:  SizedBox(
+//         height: ScreenUtil().setHeight(80),
+//         width: double.infinity,
+//         child: ListView.builder(
+//              shrinkWrap: true,
+//           scrollDirection: Axis.horizontal,
+//           // itemCount: classesModel.length,
+//                 itemBuilder: (context, index) {
+//                   return  customTabBarItem(
+//                     onTap: (){
+//                       //  Get.to(() => ClassesListView());
+//                     } ,
+//                     text: name,
+//                     chose: true,
+//                     image:classesModel.backImage,
+//                   );
+//                 },
+         
+       
+         
+//             //  Padding(
+//             //    padding:  EdgeInsets.all(8.0.h),
+//             //    child: customTabBarItem(
+//             //     onTap: (){
+//             //      // Get.to(() => ClassesListView());
+//             //     } ,
+//             //     text: classesModel.name,
+//             //     chose: true,
+//             //      image:classesModel.backImage,
+//             //    ),
+//             //  ),
+//             //  Padding(
+//             //    padding:  EdgeInsets.all(8.0.h),
+//             //    child: customTabBarItem(
+//             //     image: classesModel.backImage,
+//             //     onTap: (){
+//             //       //  Get.to(() => ClassesListView());
+//             //     } ,
+//             //     text: name,
+//             //     chose: true,
+                 
+//             //    ),
+//             //  ),
+
+          
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // ignore: must_be_immutable
+// class customTabBarItem extends StatelessWidget {
+//   customTabBarItem({
+//     Key? key,
+//     required this.text,
+//     required this.chose,
+//     required this.onTap,
+//     required this.image,
+//   }) : super(key: key);
+
+//    final String text;
+//    final bool chose;
+//   VoidCallback  onTap;
+//     String image ;
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: onTap ,
+//       child: GestureDetector(
+//         onTap: onTap,
+//         child: Container(
+//          width: 120.h,
+//          padding: EdgeInsets.all(15.h),
+//              alignment: Alignment.center,
+            
+//              decoration: BoxDecoration(
+//              image:  DecorationImage(
+//                image:  chose ?AssetImage(image) :const 
+//                AssetImage ('assets/image/Frame 17.png'),
+//                fit: BoxFit.fill
              
-           ),
-           child:  Text(text,
-           style:const TextStyle(
-             fontSize:20 ,
-             fontWeight: FontWeight.bold,
-           )),
-         ),
-    );
-  }
-}
+                
+//             ),
+//                border: Border.all(color: Colors.blue),
+//                borderRadius: BorderRadius.circular(10.h)
+               
+//              ),
+//              child:  Text(text,
+//              style: TextStyle(
+//                fontSize:ScreenUtil().setSp(20) ,
+//                fontWeight: FontWeight.bold,
+//              )),
+//            ),
+//       ),
+//     );
+//   }
+// }
+

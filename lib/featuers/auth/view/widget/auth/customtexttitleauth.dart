@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextTitleAuth extends StatelessWidget {
   final String text;
@@ -6,14 +7,17 @@ class CustomTextTitleAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.right,
-      style:const TextStyle(
-        color: Colors.black,
-        fontSize: 20,
-        fontWeight: FontWeight.bold
-      ) ,
+    return Align(
+        alignment: Alignment.bottomRight,
+      child: Text(
+        text,
+        textAlign: TextAlign.right,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 24.h,
+          fontWeight: FontWeight.w800
+        ) ,
+      ),
     );
   }
 }

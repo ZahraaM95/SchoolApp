@@ -1,5 +1,6 @@
 import 'package:flutter_school/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtomAuth extends StatelessWidget {
   final String text;
@@ -10,18 +11,19 @@ class CustomButtomAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:const EdgeInsets.only(top: 10),
-      padding:const EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: ScreenUtil().setHeight(10)),
+      padding: EdgeInsets.only(top: ScreenUtil().setHeight(10)),
       child: MaterialButton(
         
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        padding:const EdgeInsets.symmetric(vertical: 20, horizontal: 120),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        padding: EdgeInsets.symmetric(vertical:ScreenUtil().setHeight(18), horizontal:ScreenUtil().setWidth(110)),
         onPressed: onPressed,
         color: AppColor.primaryColor,
         textColor: Colors.white,
+        
         child: Text(text, 
-        style:const TextStyle(
-          fontWeight: FontWeight.bold , fontSize: 16)),
+        style: TextStyle(
+          fontWeight: FontWeight.bold , fontSize: ScreenUtil().setSp(16))),
       ),
     );
   }

@@ -1,73 +1,53 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_school/controller/home/bottom_navigation_con.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class MyBottomNavigationBar extends StatefulWidget {
-  const MyBottomNavigationBar({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
-}
-
-class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
-  int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('الرئيسية'),
-    Text('التصنيف'),
-    Text('المجتمع'),
-    Text('الحساب'),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class bottomNavigationBar extends GetView<HomeController> {
+  const bottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return 
-      //  Center(
-      //   child: _widgetOptions.elementAt(_selectedIndex),
-      // ),
-       BottomNavigationBar(
-        
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: const TextStyle(
-            color: Colors.black,
-           
-            ),
-          selectedItemColor: Colors.black,
-
-          selectedIconTheme: const IconThemeData(color: Colors.black),
-        items: 
-       const <BottomNavigationBarItem>[
+    return Scaffold(
+      body: Navigator(
+        key: Get.nestedKey(1),
+        initialRoute: '/home',
+        onGenerateRoute: controller.onGenerateRoute,
+      ),
+      bottomNavigationBar: Obx(
+        () => BottomNavigationBar(
+                 items: 
+        <BottomNavigationBarItem>[
        BottomNavigationBarItem(
-        
-            icon: Icon(Icons.home),
+            icon: SvgPicture.asset('assets/svg/home.svg'),
             label: 'الرئيسية',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
+            icon: SvgPicture.asset('assets/svg/cup.svg'),
             label: 'التصنيف',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people),
+            icon: SvgPicture.asset('assets/svg/messages-2.svg'),
             label: 'المجتمع',
+      
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: SvgPicture.asset('assets/svg/user2.svg'),
             label: 'الحساب',
+            
+            
           ),
         ],
- 
-     
-        currentIndex: _selectedIndex,
-      
-        onTap: _onItemTapped,
-      
+       
+          currentIndex: controller.currentIndex.value,
+          selectedItemColor: Colors.pink,
+          onTap: controller.changePage,
+        ),
+      ),
     );
   }
 }
+
+
+
+  
